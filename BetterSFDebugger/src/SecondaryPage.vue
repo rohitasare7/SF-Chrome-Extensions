@@ -2,20 +2,20 @@
   <div class="dark:bg-gray-900 py-2">
     <div class="p-5 w-11/12 antialiased mx-auto">
       <ToggleLightDarkMode />
-      <SecondaryComp />
+      <Main />
     </div>
   </div>
 </template>
 
 <script>
-import SecondaryComp from './components/partial/SecondaryComp.vue';
+import Main from './components/partial/Main.vue';
 import ToggleLightDarkMode from './components/elements/ToggleLightDarkMode.vue'
 import './assets/index.css';
 
 export default {
   name: 'App',
   components: {
-    SecondaryComp,
+    Main,
     ToggleLightDarkMode
   }
 }

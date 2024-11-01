@@ -3,8 +3,8 @@
 // import DisplayRecords from '@/components/partial/DisplayRecords';
 import { ref, onMounted, shallowRef } from "vue";
 import { apiVersion, sfConn, formatDate } from "@/assets/helper";
-import { fetchRecords } from "@/assets/storageUtil";
-import { saveRecord } from "@/assets/storageUtil";
+import { fetchRecords , saveRecord } from "@/assets/storageUtil";
+import { APP_NAME } from "../store/globalConstants";
 import { extractValue, getSalesforceURL } from "@/assets/globalUtil";
 import PrimaryButton from "../elements/PrimaryButton.vue";
 import TextInput from "../elements/TextInput.vue";
@@ -15,7 +15,6 @@ import SVGIconButton from "../elements/SVGIconButton.vue";
 import Icon_Favorite from "@/assets/icons/Icon_Favorite.vue";
 import Icon_Execute from "@/assets/icons/Icon_Execute.vue";
 import Icon_Close from "@/assets/icons/Icon_Close.vue";
-import FavoriteTable from './FavoriteTable.vue';
 import Modal from "../elements/Modal.vue";
 //Editor
 import { HighCode } from 'vue-highlight-code';
@@ -44,7 +43,7 @@ const sfHostURL = ref('');
 const queriedObject = ref('');
 const orgIdentifier = ref('');
 
-const pageTitle = 'Vlocity OmniStudio Helper';
+const pageTitle = APP_NAME;
 const omniScriptLoaded = ref('OmniScripts Loaded' + ' | ' + pageTitle);
 const flexCardsLoaded = ref('FlexCards Loaded' + ' | ' + pageTitle);
 const IPloaded = ref('Integration Procedures Loaded' + ' | ' + pageTitle);
@@ -405,9 +404,6 @@ onMounted(async () => {
         </template>
       </Vue3EasyDataTable>
     </div>
-
-    <FavoriteTable v-if="sfHostURL && recordList.length > 0" :sfHost="sfHostURL" :currenObject="queriedObject"
-      ref="childComponentRef" @fireEvent="handleEvent" />
 
     <div v-if="sfHostURL && recordList.length > 0" class="flex items-end justify-end mt-10">
       <TextDesc>Vlocity OmniStudio Helper by <a href="https://www.youtube.com/@ThatSalesforceGuy" target="_blank"
